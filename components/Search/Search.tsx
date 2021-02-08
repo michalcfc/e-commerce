@@ -1,23 +1,21 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from "react"
 import { SearchProps } from "./Search.d"
 import { 
     SearchStyle,
-    SearchList,
-    SearchItem,
-    SearchText
 } from "./Search.styles";
 
 import Input from "../Input"
+import Autocomplates from "./components/Autocomplates"
 
 import db from "../../api/db.json"
 
 const ENTER = 13
 const ARROW_UP = 40
 const ARROW_DOWN = 38
-const NO_PRODUCTS_TEXT = "No results. Try again."
 
 const Search: React.FC<SearchProps> = () => {
+    const router = useRouter()
     const [searchText, setSearchText] = useState('')
     const [autocompletes, setAutocompletes] = useState([])
     const [isAutocomplatesShow, setShowAutocomplates] = useState(false)
@@ -40,7 +38,6 @@ const Search: React.FC<SearchProps> = () => {
       } 
 
       const onKey = (e) => {
-        console.log(selectedProduct, autocompletes.length)
         if(
             e.keyCode === ARROW_UP){
             setSelectedProduct(selectedProduct+1)
@@ -52,34 +49,35 @@ const Search: React.FC<SearchProps> = () => {
         }
       }
 
+      const goToProduct = (e) => {
+          if(e.keyCode === ENTER) {
+            const product = autocompletes[selectedProduct]
+            router.push(`/product/${product.name}`)
+        }
+      }
+
   return (
   <>
-    <SearchStyle>
+    <SearchStyle 
+        onMouseEnter={() => setShowAutocomplates(true)}
+        onMouseLeave={() => setShowAutocomplates(false)}
+        >
         <Input 
-            placeholder="Szukaj"
-            onChange={(e) => handleChange(e)}
             value={searchText}
+            placeholder="Szukaj"
             onKeyUp={(e) => onKey(e)}
-            onFocus={() => setShowAutocomplates(true)}
+            onChange={(e) => handleChange(e)}
+            onKeyDown={(e) => goToProduct(e)}
         />
-        {isAutocomplatesShow
-        && <SearchList onFocus={ () => {console.log('main', 'blur');} }>
-        {searchText 
-        && !autocompletes.length
-        ? <SearchText>{NO_PRODUCTS_TEXT}</SearchText> 
-        : searchText 
-        && autocompletes.map((product, index) => {
-            return (
-                <>
-                <Link href={`/product/${product.name}`}> 
-                    <SearchItem test={index === selectedProduct} key={product.id}>
-                            {product.name}
-                    </SearchItem>
-                </Link>
-                </>
-            )
-        })}
-        </SearchList>}
+        {
+            isAutocomplatesShow &&
+            <Autocomplates 
+                searchText={searchText}
+                goToProduct={goToProduct}
+                autocompletes={autocompletes}
+                selectedProduct={selectedProduct}
+            />
+        }
     </SearchStyle>
   </>
   )
