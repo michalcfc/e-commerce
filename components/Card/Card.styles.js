@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
   cursor: pointer;
   border: 1px solid #ddd;
+  &:hover {
+    border: 1px solid #845ef7;
+  }
 `;
 
 export const CardFigure = styled.figure`
