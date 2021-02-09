@@ -28,7 +28,7 @@ const Autocomplates: React.FC<AutocomplatesProps> = ({
         && autocompletes.map((product, index) => {
             return (
                 <div key={product.id}>
-                    <Link href={`/product/${product.name}`}> 
+                    <Link href={`/products/${product.name}`}> 
                         <AutocomplatesItem 
                             test={index === selectedProduct}
                             

@@ -52,7 +52,7 @@ const Search: React.FC<SearchProps> = () => {
       const goToProduct = (e) => {
           if(e.keyCode === ENTER) {
             const product = autocompletes[selectedProduct]
-            router.push(`/product/${product.name}`)
+            router.push(`/products/${product.name}`)
         }
       }
 
