@@ -5,12 +5,16 @@ import {
     ButtonWrapper
 } from "./Button.styles"
 
-const Aside = () => {
+const Button = ({ 
+    name, 
+    onClick }) => {
     return (
-        <ButtonWrapper>
-            Button
+        <ButtonWrapper
+            onClick={onClick} 
+        >
+            {name}
         </ButtonWrapper>
     )
 }
 
-export default Aside
+export default Button

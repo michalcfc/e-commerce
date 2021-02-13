@@ -1,11 +1,11 @@
-module.exports = {
+// module.exports = {
 
-  webpack(config) {
+//   webpack(config) {
 
-    config.resolve.modules.push(__dirname)
+//     config.resolve.modules.push(__dirname)
 
-    return config;
+//     return config;
 
-  },
+//   },
 
-}
+// }

@@ -3,5 +3,8 @@ interface Links {
   }
 
 export interface MenuProps {
-    links: Links[] 
+    links: Links[]
+    isCartOpen: boolean
+    openCart: (arg: boolean) => void
+
 }

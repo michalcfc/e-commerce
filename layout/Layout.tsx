@@ -8,10 +8,12 @@ import AsideLeft    from "./components/AsideLeft"
 import AsideRight   from "./components/AsideRight"
 
 
-const Layout = ({children}) => {
+const Layout = ({children, toggleTheme}) => {
     const [view, setView] = useState(null)
+    const [isCartOpen, openCart] = useState<boolean>(false)
     const showLeftAside = view == "withAsides"
     const showRightAside = view == "withAsides"
+    console.log(isCartOpen)
 
     const menuLinks = [
         {
@@ -26,12 +28,21 @@ const Layout = ({children}) => {
             <Header 
                 setView={setView} 
                 links={menuLinks}
+                toggleTheme={toggleTheme}
+                isCartOpen={isCartOpen}
+                openCart={openCart}
             />
-            <AsideLeft isDisplay={showLeftAside} />
+            <AsideLeft 
+                isDisplay={showLeftAside} 
+            />
             <Main>
                 {children}
             </Main>
-            <AsideRight isDisplay={showRightAside} />
+            <AsideRight
+                isFixed
+                closeCart={openCart}
+                isDisplay={isCartOpen} 
+            />
             <Footer/>
         </Wrapper>
     )

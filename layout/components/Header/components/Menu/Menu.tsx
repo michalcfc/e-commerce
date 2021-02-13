@@ -12,20 +12,27 @@ import Heart from "components/Icons/Heart"
 
 
 const Menu: React.FC<MenuProps> = ({
-    links
+    links,
+    isCartOpen,
+    openCart
 }) => {
-
-    const [isCartOpen, openCart] = useState(false)
-    console.log(isCartOpen)
-
     return (
         <MenuWrapper>
             {links.map((link, id) => {
                return <MenuItem key={id}>{link.name}</MenuItem> 
             })}
-            <MenuItem.Icon><Heart/></MenuItem.Icon>
-            <MenuItem.Icon onClick={() => openCart(true)}><Bag/></MenuItem.Icon>
-            <MenuItem>Hi, Michal</MenuItem>
+            <MenuItem.Icon>
+                <Heart/>
+            </MenuItem.Icon>
+            
+            <MenuItem.Icon 
+                onClick={() => openCart(!isCartOpen)}
+            >
+                <Bag/>
+            </MenuItem.Icon>
+            <MenuItem>
+                Hi, Michal
+            </MenuItem>
         </MenuWrapper>
     )
 }
