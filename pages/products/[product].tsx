@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router'
 
-import Layout from "../../layout"
-
-const Product = ({product, posts}) => {
+const Product = () => {
   const router = useRouter()
-  const { id } = router.query
+  const { product } = router.query
 
-  return <Layout>Product: {id}</Layout>
+  return <>Product: {product}</>
 }
 
 export default Product

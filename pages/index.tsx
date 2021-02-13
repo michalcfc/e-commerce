@@ -1,10 +1,8 @@
-import Head from 'next/head'
+import { HomeProps } from "./Home.d"
 
-import Layout from "../layout"
-
-import Card from "./../components/Card"
-import Grid from "./../components/Grid"
-import Filters from "./../components/Filters"
+import Card     from "@components/Card"
+import Grid     from "@components/Grid"
+import Filters  from "@components/Filters"
 
 const db = [
   {
@@ -87,34 +85,38 @@ const db = [
       "https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/demo-1/img/12.87084176.png",
     desc:
       "Up to 10 hours of surﬁng the web on Wi‑Fi, watching video, or listening to music. Up to 9 hours of surﬁng the web using cellular data network, Compatible with Smart Keyboard Folio and Bluetooth keyboards"
-  },
-  
+    },
+    
 ];
 
-import { HomeProps } from "./Home.d"
-
 const renderProducts = () => {
-  return <>{db.map(product => {
-    return  <Card
-        key={product.id}
-        img={product.img}
-        body={product.name}
-        product={product}
-      />
-    })}</>
+  return <>
+    {db.map(product => {
+      return (
+        <Card
+          key={product.id}
+          img={product.img}
+          body={product.name}
+          product={product}
+        />
+      )})}
+    </>
 }
 
 const Home: React.FC<HomeProps> = () => {
   return (
     <>
-      <Layout>
-        <Grid columns="180px 1fr" gridGap="20px">
-          <Filters />
-          <Grid columns="repeat(auto-fit, minmax(240px, 1fr));" gridGap="20px">
-            {renderProducts()}
-          </Grid>
+        <Grid 
+          columns="180px 1fr" 
+          gridGap="20px"
+          >
+            <Filters />
+            <Grid 
+              columns="repeat(auto-fit, minmax(240px, 1fr));" 
+              gridGap="20px">
+              {renderProducts()}
+            </Grid>
         </Grid>
-      </Layout>
     </>
   )
 }

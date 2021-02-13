@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
+  display: flex;
   cursor: pointer;
   position: relative;
-  background: #fff;
   border-radius: 0.4rem;
+  flex-direction: column;
   border: 1px solid transparent;
-  box-shadow: 4px 4px 20px 0 rgba(0,0,0,.1);
+  background: ${({theme}) => theme.background};
+  box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
   &:hover {
     border: 1px solid #845ef7;
     box-shadow: 4px 4px 20px 0 rgba(103, 58, 183, 0.43);
@@ -24,6 +26,12 @@ export const CardImg = styled.img`
 `
 
 export const CardBody = styled.div`
+  flex: 1 0 0;
+  margin: 0.5rem;
+  padding: 0.5rem;
+`;
+
+export const CardFooter = styled.div`
   margin: 0.5rem;
   padding: 0.5rem;
 `;

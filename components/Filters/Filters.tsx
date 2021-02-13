@@ -9,11 +9,18 @@ const Filters: React.FC<FiltersProps> = ({
 }) => (
   <FiltersStyle>
     <h2>Kategorie</h2>
-    <div>
-        <Checkbox/>
-        <Checkbox/>
-    </div>
-    <Checkbox />
+      <Checkbox
+        id="1"
+        label="category"
+        />
+      <Checkbox
+        id="2"
+        label="category"
+      />
+      <Checkbox
+          id="3"
+         label="category"
+        />
   </FiltersStyle>
 )
 

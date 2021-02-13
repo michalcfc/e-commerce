@@ -1,9 +1,6 @@
 module.export = {
     resolve: {
-      alias: {
-        'components': '/components',
-        'layouts': '/layouts'
-      },
+      Templates: path.resolve(__dirname, 'src/templates/'),
       extensions: ['.ts', '.tsx', '.js', '.json'],
     }
   }

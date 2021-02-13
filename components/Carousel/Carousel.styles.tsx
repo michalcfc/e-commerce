@@ -11,7 +11,7 @@ export const CarouselStyle = styled.div<DataProps>`
 `;
 
 export const Slide = styled.div<DataProps>`
-    background:  ${theme('colors', 'color')};
+    background:  ${props => props.theme.colors};
     margin: 10px;
     padding: 20px;
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0,1),0 4px 6px -2px rgba(0,0,0.0.05);
