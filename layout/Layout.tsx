@@ -35,6 +35,7 @@ const Layout = ({
         }
     ]
     return (
+        
         <Wrapper view={view}>
             <Header 
                 data={products}
