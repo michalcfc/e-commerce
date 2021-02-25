@@ -7,7 +7,7 @@ import {
 
 const Button = ({ 
     name, 
-    onClick }) => {
+    onClick }) => { 
     return (
         <ButtonWrapper
             onClick={onClick} 

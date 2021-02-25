@@ -2,7 +2,8 @@ import { useState } from "react"
 
 import {
     MenuWrapper,
-    MenuItem
+    MenuItem,
+    IconText
 } from "./Menu.styles"
 
 import { MenuProps } from "./Menu.d"
@@ -14,7 +15,8 @@ import Heart from "components/Icons/Heart"
 const Menu: React.FC<MenuProps> = ({
     links,
     isCartOpen,
-    openCart
+    openCart,
+    data
 }) => {
     return (
         <MenuWrapper>
@@ -23,12 +25,18 @@ const Menu: React.FC<MenuProps> = ({
             })}
             <MenuItem.Icon>
                 <Heart/>
+                <IconText>
+                    {data.length}
+                </IconText>
             </MenuItem.Icon>
             
             <MenuItem.Icon 
                 onClick={() => openCart(!isCartOpen)}
             >
                 <Bag/>
+                <IconText>
+                    {data.length}
+                </IconText>
             </MenuItem.Icon>
             <MenuItem>
                 Hi, Michal

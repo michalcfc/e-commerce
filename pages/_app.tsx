@@ -33,17 +33,17 @@ export default function App({ Component, pageProps }) {
       }
       >
       <GlobalStyles />
+      <Provider 
+        store={store}
+      >
         <Layout 
           toggleTheme={toggleTheme}
-          >
-          <Provider 
-            store={store}
           >
               <Component 
                 {...pageProps} 
                 />
-            </Provider>
         </Layout>
+        </Provider>
       </ThemeProvider>
       
     </>

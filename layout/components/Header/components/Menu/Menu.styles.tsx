@@ -16,8 +16,10 @@ export const MenuItem: any = styled.div`
 
 export const Icon = styled(MenuItem)`
   position: relative;
-  &:before {
-    content: "1";
+`
+
+  export const IconText = styled(MenuItem)`
+    content: "";
     color: #fff;
     top: -4px;
     left: -6px;
@@ -30,7 +32,8 @@ export const Icon = styled(MenuItem)`
     position: absolute;
     border-radius: 50%;
     text-align: center;
-  }`
+  }
+`
 
 
 MenuItem.Icon = Icon

@@ -4,17 +4,20 @@ import {
     HeaderContent
 } from "./Header.styles"
 
+import { HeaderProps } from "./Header.d"
+
 import Menu from "./components/Menu"
 import Select from "@components/Select"
 import Search from "@components/Search"
 import Button from "@components/Button"
 
-const Header = ({
+const Header: React.FC<HeaderProps> = ({
     setView, 
     links, 
     toggleTheme,
     isCartOpen,
-    openCart
+    openCart,
+    data,
 }) => {
     const options = [
         {
@@ -50,6 +53,7 @@ const Header = ({
                 links={links}
                 isCartOpen={isCartOpen}
                 openCart={openCart}
+                data={data}
             />
             </HeaderContent>
         </HeaderWrapper>

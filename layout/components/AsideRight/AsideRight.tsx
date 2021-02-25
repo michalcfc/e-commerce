@@ -7,6 +7,7 @@ import {
     AsideExit,
 } from "./AsideRight.styles"
 
+
 import Trash from "../../../components/Icons/Trash"
 import Cross from "../../../components/Icons/Cross"
 
@@ -20,8 +21,11 @@ import {
 const AsideRight:React.FC<AsideRightProps> = ({
     isFixed,
     isDisplay,
-    closeCart
+    closeCart,
+    deleteProduct,
+    data
 }) => {
+    
     return (
         <>
         {isDisplay && 
@@ -32,18 +36,17 @@ const AsideRight:React.FC<AsideRightProps> = ({
             ><Cross />
             </AsideExit>
             <AsideItems>
-                <AsideItem>
-                    <span>Apple iMac 27-inch</span>
-                    <Trash 
-                        color="red" 
-                    />
-                </AsideItem>
-                <AsideItem>
-                    <span>Apple iMac 27-inch</span>
-                    <Trash 
-                        color="red" 
-                    />
-                </AsideItem>
+                {data.map(product => (
+                    <div key={product.id}>
+                      <AsideItem>
+                          <span>{product.name}</span>
+                        <Trash 
+                            color="red" 
+                            onClick={() => deleteProduct(product.id)}
+                        />
+                        </AsideItem>
+                    </div>
+                ))}
             </AsideItems>
             <Button 
                 name="Back to shopping"

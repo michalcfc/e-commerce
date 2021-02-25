@@ -11,3 +11,12 @@ export const MainWrapper = styled.main`
 export const MainContainer = styled.div`
   width: 80%;
 `
+
+export const Notification = styled.div`
+  max-width: 100%;
+  margin-bottom: .75rem;
+  border-radius: .375rem;
+  padding: .75rem 1.25rem;
+  border: 1px solid transparent;
+  background:  ${({theme}) => theme.colors.green};
+`
