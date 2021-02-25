@@ -2,40 +2,43 @@
 import {
     CardContainer,
     CardFigure,
-    CardBody,
+    CardTitle,
+    CardContent,
     CardFooter,
     CardImg
 } from "./Card.styles"
 
-import Link from 'next/link'
+import { CardProps } from './Card.d';
 
-import Button   from "./../Button"
-
-const Card = ({body, img, product}) => {
+const Card: React.FC<CardProps> = ({ 
+    img, 
+    children,
+    title,
+    columnSpan,
+    hoverEffect,
+    pointer,
+    mb,
+    mt
+}) => {
     return (
-        <CardContainer>
-            <CardFigure>
+        <CardContainer
+            mb={mb}
+            mt={mt}
+            pointer={pointer}
+            columnSpan={columnSpan}
+            hoverEffect={hoverEffect}
+        >
+            {img && <CardFigure>
                 <CardImg 
                     src={img} 
                 />
-            </CardFigure>
-            <CardBody>
-                {body}
-            </CardBody>
-            <CardFooter>
-                <Button 
-                    name="Add to cart"
-                    onClick={() => {}}
-                />
-                 <Link 
-                    href={`/products/${product.name}`}
-                >
-                <Button 
-                    name="View"
-                    onClick={() => {}}
-                />
-                </Link>
-            </CardFooter>
+            </CardFigure>}
+            <CardContent>
+                <CardTitle>
+                    {title}
+                </CardTitle>
+                {children}
+            </CardContent>
         </CardContainer>
     )
 }

@@ -1,8 +1,18 @@
+import { useState } from 'react'
+import { connect }    from "react-redux";
+
 import { HomeProps } from "./Home.d"
 
 import Card     from "@components/Card"
 import Grid     from "@components/Grid"
 import Filters  from "@components/Filters"
+
+import Button     from "@components/Button"
+
+import { 
+  addProduct,
+  deleteProduct
+} from "../store/Cart/actions";
 
 const db = [
   {
@@ -89,36 +99,61 @@ const db = [
     
 ];
 
-const renderProducts = () => {
-  return <>
-    {db.map(product => {
-      return (
-        <Card
-          key={product.id}
-          img={product.img}
-          body={product.name}
-          product={product}
-        />
-      )})}
-    </>
-}
+const Home: React.FC<HomeProps> = ({
+  products,
+  addProduct,
+  deleteProduct
+}) => {
 
-const Home: React.FC<HomeProps> = () => {
+  
   return (
     <>
         <Grid 
           columns="180px 1fr" 
           gridGap="20px"
           >
-            <Filters />
+          <Filters />
             <Grid 
               columns="repeat(auto-fit, minmax(240px, 1fr));" 
               gridGap="20px">
-              {renderProducts()}
+              {db.map(product => {
+                return (
+                  <Card
+                    hoverEffect
+                    key={product.id}
+                    img={product.img}
+                    title={product.name}
+                  >
+                    <Button 
+                      name="Add to cart"
+                      onClick={() => addProduct(product)}
+                    />
+                     <Button 
+                      name="Remove"
+                      onClick={() => deleteProduct(product.id)}
+                    />
+                  </Card>
+                )})}
             </Grid>
         </Grid>
     </>
   )
 }
 
-export default Home
+const mapStateToProps = state => {
+  return {
+      products: state.cart.products,
+    }
+  };
+
+const mapDispatchToProps = dispatch => {
+  return {
+      addProduct: (product) => dispatch(addProduct(product)),
+      deleteProduct: (id) => dispatch(deleteProduct(id)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

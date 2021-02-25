@@ -1,6 +1,21 @@
 import styled from "styled-components";
+import { space } from "styled-system"
 
-export const CardContainer = styled.div`
+type DataProps = {
+  rows?: number
+  rowGap?: number
+  columns?: string
+  gridGap?: string
+  columnGap?: number
+  columnSpan?: number
+  hoverEffect?: boolean
+  pointer?: boolean
+  mt?: number
+  mb?: number
+}
+
+export const CardContainer = styled.div<DataProps>`
+  ${space}
   display: flex;
   cursor: pointer;
   position: relative;
@@ -8,30 +23,37 @@ export const CardContainer = styled.div`
   flex-direction: column;
   border: 1px solid transparent;
   background: ${({theme}) => theme.background};
-  box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+  box-shadow: ${({theme}) => theme.boxShadow};
+  grid-column: ${({columnSpan}) => columnSpan ? `1 / span ${columnSpan}` : ''};
   &:hover {
-    border: 1px solid #845ef7;
-    box-shadow: 4px 4px 20px 0 rgba(103, 58, 183, 0.43);
+    border: ${({theme, hoverEffect}) => hoverEffect && `1px solid ${theme.colors.purple}`};
+    box-shadow: ${({theme, hoverEffect}) => hoverEffect && theme.boxShadowColor};
   };
 `;
 
 export const CardFigure = styled.figure`
   margin: 0;
   padding: 0;
+  position: relative;
 `
 
 export const CardImg = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+ width: 100%;
+ height: 180px;
+ object-fit: cover;
 `
 
-export const CardBody = styled.div`
-  flex: 1 0 0;
-  margin: 0.5rem;
-  padding: 0.5rem;
+export const CardTitle = styled.div`
+
+`;
+
+export const CardContent = styled.div`
+  flex: 1 1 0%;
+  margin:  ${({theme}) => theme.spacing.sm};
+  padding: ${({theme}) => theme.spacing.sm};
 `;
 
 export const CardFooter = styled.div`
-  margin: 0.5rem;
-  padding: 0.5rem;
+  margin: ${({theme}) => theme.spacing.sm};
+  padding: ${({theme}) => theme.spacing.sm};
 `;

@@ -7,7 +7,9 @@ declare module 'styled-components' {
     background: string;
     bacgrkoundMain: string
     text: string;
-    body: string; 
+    body: string;
+    boxShadow: string
+    boxShadowColor: string
     colors: {
       [el: string]: string
     }

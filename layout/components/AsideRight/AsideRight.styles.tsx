@@ -6,6 +6,7 @@ type DataProps = {
 
 export const AsideWrapper = styled.aside<DataProps>`
   right: 0;
+  z-index: 999;
   grid-area: asideRight;
   position: ${({isFixed}) => isFixed && 'fixed'};
   &::after {

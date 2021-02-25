@@ -1,3 +1,5 @@
 export interface HomeProps {
-    toggleTheme: () => void;
+    products: ''
+    addProduct: (arg: { id: number, name: string, img: string, desc: string}) => void
+    deleteProduct: (id: number) => void
 }

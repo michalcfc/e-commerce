@@ -3,22 +3,26 @@ import {
   ADD_PRODUCT, 
   REMOVE_PRODUCT, 
   CartActionTypes,
+  OPEN_CART,
 } from './types'
 
-// TypeScript infers that this function is returning SendMessageAction
-export function sendMessage(newMessage: Product): CartActionTypes {
+export function addProduct(product: Product): CartActionTypes {
   return {
     type:  ADD_PRODUCT,
-    product: newMessage
+    product: product
   }
 }
 
-// TypeScript infers that this function is returning DeleteMessageAction
-export function deleteMessage(timestamp: number): CartActionTypes {
+export function deleteProduct(id: number): CartActionTypes {
   return {
     type:   REMOVE_PRODUCT,
-    meta: {
-      timestamp
-    }
+    id
+  }
+}
+
+export function openCart(id: number): CartActionTypes {
+  return {
+    type:   OPEN_CART,
+    id
   }
 }
