@@ -116,6 +116,7 @@ const Home: React.FC<HomeProps> = ({
             <Grid 
               columns="repeat(auto-fit, minmax(240px, 1fr));" 
               gridGap="20px">
+                
               {db.map(product => {
                 return (
                   <Card
